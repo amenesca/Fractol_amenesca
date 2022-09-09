@@ -2,7 +2,7 @@ NAME 		= fractol
 
 LIBFT		= ./libft/libft.a
 
-SRCS		= ./src/handle_keys.c ./src/fractol.c ./src/draw_fractol.c ./src/put_fractol.c ./src/put_colors.c
+SRCS		= ./src/handle_keys.c ./src/fractol.c ./src/draw_fractol.c ./src/put_colors.c
 
 OBJS		= $(SRCS:.c=.o)
 

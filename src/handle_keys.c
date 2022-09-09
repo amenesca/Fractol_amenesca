@@ -20,13 +20,11 @@ int handle_mouse(int button, int x, int y, t_fractol *fr)
 	down = 4;
 	if (button == up)
 	{
-		(*fr).min_r = (*fr).min_r * 1.1;
-		draw_mandelbrot((*fr));
+		fractol_zoom_in((*fr));
 	}
 	if (button == down)
 	{
-		(*fr).min_r = (*fr).min_r / 1.1;
-		draw_mandelbrot((*fr));
+		fractol_zoom_out((*fr));
 	}
 	return (*fr).iter;
 }

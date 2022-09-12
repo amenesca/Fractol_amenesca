@@ -17,6 +17,7 @@ void	draw_mandelbrot(t_fractol fr)
 
 void	draw_julia(t_fractol fr)
 {
+	fr.y = -1;
 	while (++fr.y < WIN_Y)
 	{
 		fr.x = -1;

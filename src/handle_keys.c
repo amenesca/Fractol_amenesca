@@ -1,6 +1,5 @@
 #include "../includes/fractol.h"
 
-#include "stdio.h"
 int handle_keys(int button, t_fractol *fr)
 {
 	if (button == 53)
@@ -8,22 +7,17 @@ int handle_keys(int button, t_fractol *fr)
 	return (*fr).iter;
 }
 
+#include <stdio.h>
 int handle_mouse(int button, int x, int y, t_fractol *fr)
 {
-	int up;
-	int down;
-	(void)x;
-	(void)y;
-
-	up = 5;
-	down = 4;
-	if (button == up)
+	printf("x:%d\ny:%d\nbutton:%d\n", x, y, button);
+	if (button == 1)
 	{
-		fractol_zoom_in((*fr));
+		
 	}
-	if (button == down)
-	{
-		fractol_zoom_out((*fr));
-	}
+	if (button == 5)
+		fractol_zoom_in(fr);
+	if (button == 4)
+		fractol_zoom_out(fr);
 	return (*fr).iter;
 }

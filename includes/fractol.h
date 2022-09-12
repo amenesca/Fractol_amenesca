@@ -7,7 +7,7 @@
 
 # define WIN_X 600
 # define WIN_Y 600
-# define MAX_ITER 100
+# define MAX_ITER 80
 
 typedef struct s_fractol
 {
@@ -25,11 +25,12 @@ typedef struct s_fractol
 	int		y;
 	int		iter;
 	int		render;
-	void *img;
-	char *addr;
-  	int bits_per_pixel;
-  	int line_length;
-  	int endian;
+	int		what_fractol;
+	void	*img;
+	char	*addr;
+  	int		bits_per_pixel;
+  	int 	line_length;
+  	int 	endian;
 }	t_fractol;
 
 /*typedef struct s_image {
@@ -48,8 +49,9 @@ void	draw_julia(t_fractol fr);
 void	put_colors(t_fractol fr);
 int		handle_keys(int button, t_fractol *fr);
 int		handle_mouse(int button, int x, int y, t_fractol *fr);
-void    fractol_zoom_in(t_fractol fr);
-void    fractol_zoom_out(t_fractol fr);
-int		render_fr(t_fractol fr);
+void    fractol_zoom_in(t_fractol *fr);
+void    fractol_zoom_out(t_fractol *fr);
+int		render_fr(t_fractol *fr);
+void    mlx_fractol(t_fractol *fr);
 
 #endif

@@ -1,6 +1,6 @@
 #include "../includes/fractol.h"
 
-void	draw_mandelbrot(t_fractol fr, t_image img)
+void	draw_mandelbrot(t_fractol fr)
 {
 	fr.y = -1;
 	while (++fr.y < WIN_Y)
@@ -10,12 +10,12 @@ void	draw_mandelbrot(t_fractol fr, t_image img)
 		{
 			fr.cr = fr.min_r + (double)fr.x * ((fr.max_r - fr.min_r) / WIN_X);
             fr.ci = fr.min_i + (double)fr.y * ((fr.max_i - fr.min_i) / WIN_Y);
-			put_mandelbrot(fr, img);
+			put_mandelbrot(fr);
 		}
 	}
 }
 
-void	draw_julia(t_fractol fr, t_image img)
+void	draw_julia(t_fractol fr)
 {
 	while (++fr.y < WIN_Y)
 	{
@@ -24,12 +24,12 @@ void	draw_julia(t_fractol fr, t_image img)
 		{
 			fr.zr = fr.min_r + (double)fr.x * ((fr.max_r - fr.min_r) / WIN_X);
             fr.zi = fr.min_i + (double)fr.y * ((fr.max_i - fr.min_i) / WIN_Y);
-			put_julia(fr, img);
+			put_julia(fr);
 		}
 	}
 }
 
-void    put_mandelbrot(t_fractol fr, t_image img)
+void    put_mandelbrot(t_fractol fr)
 {
     int		is_fr;
 	double	temp;
@@ -50,12 +50,12 @@ void    put_mandelbrot(t_fractol fr, t_image img)
 		fr.zi = temp;
 	}
 	if (is_fr == 1)
-		my_mlx_pixel_put(&img, fr.x, fr.y, 0x00000000);
+		my_mlx_pixel_put(&fr, fr.x, fr.y, 0x00000000);
 	if (is_fr == 0)
-		put_colors(fr, img);
+		put_colors(fr);
 }
 
-void    put_julia(t_fractol fr, t_image img)
+void    put_julia(t_fractol fr)
 {
     int		is_fr;
 	double	temp;
@@ -76,7 +76,7 @@ void    put_julia(t_fractol fr, t_image img)
 		fr.zi = temp;
 	}
 	if (is_fr == 1)
-		my_mlx_pixel_put(&img, fr.x, fr.y, 0x00000000);
+		my_mlx_pixel_put(&fr, fr.x, fr.y, 0x00000000);
 	if (is_fr == 0)
-		put_colors(fr, img);
+		put_colors(fr);
 }

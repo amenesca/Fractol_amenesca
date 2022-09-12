@@ -24,25 +24,32 @@ typedef struct s_fractol
 	int		x;
 	int		y;
 	int		iter;
+	int		render;
+	void *img;
+	char *addr;
+  	int bits_per_pixel;
+  	int line_length;
+  	int endian;
 }	t_fractol;
 
-typedef struct s_image {
+/*typedef struct s_image {
   void *img;
   char *addr;
   int bits_per_pixel;
   int line_length;
   int endian;
-} t_image;
+} t_image;*/
 
-void 	my_mlx_pixel_put(t_image *img, int x, int y, int color);
-void	draw_mandelbrot(t_fractol fr, t_image img);
-void    put_mandelbrot(t_fractol fr, t_image img);
-void    put_julia(t_fractol fr, t_image img);
-void	draw_julia(t_fractol fr, t_image img);
-void	put_colors(t_fractol fr, t_image img);
+void 	my_mlx_pixel_put(t_fractol *fr, int x, int y, int color);
+void	draw_mandelbrot(t_fractol fr);
+void    put_mandelbrot(t_fractol fr);
+void    put_julia(t_fractol fr);
+void	draw_julia(t_fractol fr);
+void	put_colors(t_fractol fr);
 int		handle_keys(int button, t_fractol *fr);
 int		handle_mouse(int button, int x, int y, t_fractol *fr);
 void    fractol_zoom_in(t_fractol fr);
 void    fractol_zoom_out(t_fractol fr);
+int		render_fr(t_fractol fr);
 
 #endif

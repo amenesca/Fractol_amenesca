@@ -3,7 +3,6 @@
 #include "stdio.h"
 int handle_keys(int button, t_fractol *fr)
 {
-//	printf("%d", button);
 	if (button == 53)
 		exit (0);
 	return (*fr).iter;

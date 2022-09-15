@@ -5,9 +5,8 @@
 # include "../libft/libft.h"
 # include <math.h>
 
-# define WIN_X 600
-# define WIN_Y 600
-# define MAX_ITER 80
+# define WIN 1000
+# define MAX_ITER 1000
 
 typedef struct s_fractol
 {
@@ -42,16 +41,20 @@ typedef struct s_fractol
 } t_image;*/
 
 void 	my_mlx_pixel_put(t_fractol *fr, int x, int y, int color);
-void	draw_mandelbrot(t_fractol fr);
-void    put_mandelbrot(t_fractol fr);
-void    put_julia(t_fractol fr);
-void	draw_julia(t_fractol fr);
-void	put_colors(t_fractol fr);
+void	draw_mandelbrot(t_fractol *fr);
+void    put_mandelbrot(t_fractol *fr);
+void    put_julia(t_fractol *fr);
+void	draw_julia(t_fractol *fr);
+void	put_colors(t_fractol *fr);
 int		handle_keys(int button, t_fractol *fr);
 int		handle_mouse(int button, int x, int y, t_fractol *fr);
 void    fractol_zoom_in(t_fractol *fr);
 void    fractol_zoom_out(t_fractol *fr);
 int		render_fr(t_fractol *fr);
 void    mlx_fractol(t_fractol *fr);
+void	move(t_fractol *f, double distance, char direction);
+double	my_atof(char *str);
+double check_signal(char *str);
+size_t nbsize_atof(double n);
 
 #endif

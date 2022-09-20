@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/20 15:11:25 by amenesca          #+#    #+#             */
+/*   Updated: 2022/09/20 15:12:41 by amenesca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
-#include "stdio.h"
-int main(int argc, char *argv[])
+
+int	main(int argc, char *argv[])
 {
 	t_fractol	fr;
 
@@ -21,7 +33,7 @@ int main(int argc, char *argv[])
 	}
 	mlx_key_hook(fr.mlx_win, handle_keys, &fr);
 	mlx_mouse_hook(fr.mlx_win, handle_mouse, &fr);
-	mlx_hook(fr.mlx_win,17, 0L, handle_close, &fr);
+	mlx_hook(fr.mlx_win, 17, 0L, handle_close, &fr);
 	mlx_loop_hook(fr.mlx, render_fr, &fr);
 	mlx_loop(fr.mlx);
 	return (0);

@@ -1,42 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_keys.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/20 14:52:33 by amenesca          #+#    #+#             */
+/*   Updated: 2022/09/20 15:02:22 by amenesca         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
 
-int handle_keys(int button, t_fractol *fr)
+int	handle_keys(int button, t_fractol *fr)
 {
 	if (button == 53)
+	{
 		mlx_destroy_image(fr->mlx, fr->img);
 		mlx_destroy_window(fr->mlx, fr->mlx_win);
 		exit (0);
-	return (*fr).iter;
+	}
+	return (fr->iter);
 }
 
-int handle_close(t_fractol *fr)
+int	handle_close(t_fractol *fr)
 {
 	mlx_destroy_image(fr->mlx, fr->img);
 	mlx_destroy_window(fr->mlx, fr->mlx_win);
 	exit (0);
 }
 
-int handle_mouse(int button, int x, int y, t_fractol *fr)
+int	handle_mouse(int button, int x, int y, t_fractol *fr)
 {
 	if (button == 1)
 	{
-		x -= WIN / 2;
-		y -= WIN / 2;
+		x -= W / 2;
+		y -= W / 2;
 		if (x < 0)
-			move(fr, (double)x / WIN, 'L');
+			move(fr, (double)x / W, 'L');
 		else if (x > 0)
-			move(fr, (double)x * -1 / WIN, 'R');
+			move(fr, (double)x * -1 / W, 'R');
 		if (y < 0)
-			move(fr, (double)y * -1 / WIN, 'U');
+			move(fr, (double)y * -1 / W, 'U');
 		else if (y > 0)
-			move (fr, (double)y / WIN, 'D');
+			move (fr, (double)y / W, 'D');
 		fr->render = 0;
 	}
 	if (button == 4)
 		fractol_zoom_in(fr);
 	if (button == 5)
 		fractol_zoom_out(fr);
-	return fr->iter;
+	return (fr->iter);
 }
 
 void	move(t_fractol *f, double distance, char direction)

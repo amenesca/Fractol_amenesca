@@ -8,6 +8,25 @@
 # define WIN 1000
 # define MAX_ITER 1000
 
+typedef struct s_color
+{
+	int r;
+	int g;
+	int b;
+	double red;
+	double green;
+	double blue;
+	double h;
+	double s;
+	double v;
+	double f;
+	double p;
+	double q;
+	double t;
+	int i;
+	int rgb;
+} t_color;
+
 typedef struct s_fractol
 {
 	void	*mlx;
@@ -32,14 +51,6 @@ typedef struct s_fractol
   	int 	endian;
 }	t_fractol;
 
-/*typedef struct s_image {
-  void *img;
-  char *addr;
-  int bits_per_pixel;
-  int line_length;
-  int endian;
-} t_image;*/
-
 void 	my_mlx_pixel_put(t_fractol *fr, int x, int y, int color);
 void	draw_mandelbrot(t_fractol *fr);
 void    put_mandelbrot(t_fractol *fr);
@@ -54,7 +65,12 @@ int		render_fr(t_fractol *fr);
 void    mlx_fractol(t_fractol *fr);
 void	move(t_fractol *f, double distance, char direction);
 double	my_atof(char *str);
-double check_signal(char *str);
-size_t nbsize_atof(double n);
+double	check_signal(char *str);
+size_t	nbsize_atof(double n);
+void	cases1(t_color *colors);
+void	cases2(t_color *colors);
+void	hsv_to_rgb(t_color *colors);
+void	ft_rgb(t_color *colors);
+int		handle_close(t_fractol *fr);
 
 #endif

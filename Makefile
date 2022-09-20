@@ -3,7 +3,7 @@ NAME 		= fractol
 LIBFT		= ./libft/libft.a
 
 SRCS		= ./src/handle_keys.c ./src/fractol.c ./src/draw_fractol.c ./src/put_colors.c ./src/put_image.c ./src/fractol_zoom.c \
-				./src/mlx_fractol.c ./src/render_fractol.c
+				./src/mlx_fractol.c ./src/render_fractol.c ./src/hsv_to_rgb.c ./src/my_atof.c
 
 OBJS		= $(SRCS:.c=.o)
 

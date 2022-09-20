@@ -60,10 +60,10 @@ void hsv_to_rgb(t_color *colors)
 			colors->h = colors->h / 60;
 	}
 	colors->i = (int)trunc(colors->h);
-	f = colors->h - colors->i;
-	p = colors->v * (1.0 - colors->s);
-	q = colors->v * (1.0 - (colors->s * colors->f));
-	t = colors->v (1.0 - (colors->s * (1.0 - colors->f)));
+	colors->f = colors->h - colors->i;
+	colors->p = colors->v * (1.0 - colors->s);
+	colors->q = colors->v * (1.0 - (colors->s * colors->f));
+	colors->t = colors->v * (1.0 - (colors->s * (1.0 - colors->f)));
 	cases1(colors);
 	cases2(colors);
 	colors->r = colors->red * 255;
@@ -71,7 +71,7 @@ void hsv_to_rgb(t_color *colors)
 	colors->b = colors->blue * 255;
 }
 
-void rgb(t_color *colors)
+void ft_rgb(t_color *colors)
 {
   colors->rgb = colors->r;
   colors->rgb = (colors->rgb << 8) | colors->g;

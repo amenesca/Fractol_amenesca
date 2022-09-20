@@ -3,11 +3,19 @@
 int handle_keys(int button, t_fractol *fr)
 {
 	if (button == 53)
+		mlx_destroy_image(fr->mlx, fr->img);
+		mlx_destroy_window(fr->mlx, fr->mlx_win);
 		exit (0);
 	return (*fr).iter;
 }
 
-#include <stdio.h>
+int handle_close(t_fractol *fr)
+{
+	mlx_destroy_image(fr->mlx, fr->img);
+	mlx_destroy_window(fr->mlx, fr->mlx_win);
+	exit (0);
+}
+
 int handle_mouse(int button, int x, int y, t_fractol *fr)
 {
 	if (button == 1)
@@ -24,11 +32,11 @@ int handle_mouse(int button, int x, int y, t_fractol *fr)
 			move (fr, (double)y / WIN, 'D');
 		fr->render = 0;
 	}
-	if (button == 5)
-		fractol_zoom_in(fr);
 	if (button == 4)
+		fractol_zoom_in(fr);
+	if (button == 5)
 		fractol_zoom_out(fr);
-	return (*fr).iter;
+	return fr->iter;
 }
 
 void	move(t_fractol *f, double distance, char direction)
@@ -38,22 +46,22 @@ void	move(t_fractol *f, double distance, char direction)
 
 	center_r = f->max_r - f->min_r;
 	center_i = f->max_i - f->min_i;
-	if (direction == 'R')
+	if (direction == 'L')
 	{
 		f->min_r += center_r * distance;
 		f->max_r += center_r * distance;
 	}
-	else if (direction == 'L')
+	else if (direction == 'R')
 	{
 		f->min_r -= center_r * distance;
 		f->max_r -= center_r * distance;
 	}
-	else if (direction == 'D')
+	else if (direction == 'U')
 	{
 		f->min_i -= center_i * distance;
 		f->max_i -= center_i * distance;
 	}
-	else if (direction == 'U')
+	else if (direction == 'D')
 	{
 		f->min_i += center_i * distance;
 		f->max_i += center_i * distance;

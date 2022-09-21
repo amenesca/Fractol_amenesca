@@ -15,18 +15,20 @@
 int	main(int argc, char *argv[])
 {
 	t_fractol	fr;
-
-	(void)argc;
-	/*if (argc == 1 || argc > 2)
-	{
-		ft_putendl_fd("Invalid Arguments, try: mandelbrot or julia", 1);
-		return (1);
-	}*/
+	
 	mlx_fractol(&fr);
+	if (test_fractol_args(argv[1]) == 1)
+		fractol_error_args(&fr);
 	if (ft_strnstr(argv[1], "mandelbrot", 11))
+	{
+		if (argc != 2)
+			fractol_error_mandelbrot(&fr);
 		fr.what_fractol = 1;
+	}
 	if (ft_strnstr(argv[1], "julia", 6))
 	{
+		if (argc != 4)
+			fractol_error_julia(&fr);
 		fr.cr = my_atof(argv[2]);
 		fr.ci = my_atof(argv[3]);
 		fr.what_fractol = 0;

@@ -6,7 +6,7 @@
 /*   By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 15:26:43 by amenesca          #+#    #+#             */
-/*   Updated: 2022/09/20 15:29:11 by amenesca         ###   ########.fr       */
+/*   Updated: 2022/09/23 12:27:48 by amenesca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	fractol_error_args(t_fractol *fr);
 int		fractol_error(int argc, char *argv[]);
 void	test_julia(char *argv1, char *argv2);
 int		ft_is_wrong_digit(int c);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

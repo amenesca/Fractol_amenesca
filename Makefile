@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: amenesca <amenesca@student.42.rio>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/23 12:43:29 by amenesca          #+#    #+#              #
+#    Updated: 2022/09/23 12:43:33 by amenesca         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME 		= fractol
 
 LIBFT		= ./libft/libft.a
@@ -17,7 +29,7 @@ RM			= rm -f
 $(NAME):	$(OBJS)
 				make -C ./libft
 				make -C ./mlx
-				cc $(OBJS) -L ./mlx -l mlx -framework OpenGl -framework Appkit $(LIBFT) -o $(NAME)
+				cc $(CFLAGS) $(OBJS) -L ./mlx -l mlx -framework OpenGl -framework Appkit $(LIBFT) -o $(NAME)
 
 all:		$(NAME)
 

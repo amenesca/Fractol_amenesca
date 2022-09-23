@@ -12,38 +12,55 @@
 
 #include "../includes/fractol.h"
 
-void fractol_error_mandelbrot(t_fractol *fr)
+int fractol_error(int argc, char *argv[])
 {
-    ft_putendl_fd("Write only mandelbrot.", 2);
-    mlx_destroy_image(fr->mlx, fr->img);
-	mlx_destroy_window(fr->mlx, fr->mlx_win);
-	exit (0);
+    if (argc == 1 || argc == 3 || argc > 4)
+    {
+        ft_putstr_fd("Wrong arguments try:\nmandelbrot;\njulia, cr, ci;", 2);
+        exit (0);
+    }
+    if (ft_strnstr(argv[1], "mandelbrot", 11) && argc == 2)
+        return (1);
+    if (ft_strnstr(argv[1], "julia", 6) && argc == 4)
+    {
+        test_julia(argv[2], argv[3]);
+        return (2);
+    }
+    ft_putstr_fd("Wrong arguments try:\nmandelbrot;\njulia, cr, ci;", 2);
+    exit (0);    
 }
 
-void fractol_error_julia(t_fractol *fr)
+void test_julia(char *argv1, char *argv2)
 {
-    ft_putendl_fd("Write only julia, cr and ci.", 2);
-    mlx_destroy_image(fr->mlx, fr->img);
-	mlx_destroy_window(fr->mlx, fr->mlx_win);
-	exit (0);
+    int i;
+
+    i = -1;
+    while (argv1[++i])
+    {
+       if (ft_is_wrong_digit(argv1[i]))
+        {
+            ft_putstr_fd("cr must be a real number.", 2);
+            exit (0);
+        }
+    }
+    i = -1;
+    while (argv2[++i])
+    {
+        if (ft_is_wrong_digit(argv2[i]))
+        {
+            ft_putstr_fd("ci must be a real number.", 2);
+            exit (0);
+        }
+    }
 }
 
-int test_fractol_args(char *str)
+int	ft_is_wrong_digit(int c)
 {
-    if (ft_strnstr(str, "mandelbrot", 11))
-        return (0);
-    if (ft_strnstr(str, "julia", 6))
-        return (0);
-    return (1);
-}
-
-void    fractol_error_args(t_fractol *fr)
-{
-    ft_putendl_fd("Wrong arguments try:", 2);
-    ft_putendl_fd("julia with cr and ci", 2);
-    ft_putendl_fd("or", 2);
-    ft_putendl_fd("mandelbrot", 2);
-    mlx_destroy_image(fr->mlx, fr->img);
-	mlx_destroy_window(fr->mlx, fr->mlx_win);
-	exit (0);
+	if ((c >= 65 && c <= 90)
+		|| (c >= 97 && c <= 122))
+		return (1);
+    if ((c >= 0 && c <= 44) || (c >= 58 && c <= 255))
+        return (1);
+	else
+		return (0);
 }

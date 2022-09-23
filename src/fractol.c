@@ -15,20 +15,14 @@
 int	main(int argc, char *argv[])
 {
 	t_fractol	fr;
-	
+	int			test_args;
+
+	test_args = fractol_error(argc, argv);
 	mlx_fractol(&fr);
-	if (test_fractol_args(argv[1]) == 1)
-		fractol_error_args(&fr);
-	if (ft_strnstr(argv[1], "mandelbrot", 11))
-	{
-		if (argc != 2)
-			fractol_error_mandelbrot(&fr);
+	if (test_args == 1)
 		fr.what_fractol = 1;
-	}
-	if (ft_strnstr(argv[1], "julia", 6))
+	if (test_args == 2)
 	{
-		if (argc != 4)
-			fractol_error_julia(&fr);
 		fr.cr = my_atof(argv[2]);
 		fr.ci = my_atof(argv[3]);
 		fr.what_fractol = 0;

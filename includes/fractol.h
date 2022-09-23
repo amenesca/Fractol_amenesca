@@ -17,8 +17,8 @@
 # include "../libft/libft.h"
 # include <math.h>
 
-# define W 600
-# define MAX_ITER 500
+# define W 500
+# define MAX_ITER 1000
 
 typedef struct s_color
 {
@@ -88,5 +88,8 @@ void	fractol_error_mandelbrot(t_fractol *fr);
 void	fractol_error_julia(t_fractol *fr);
 int		test_fractol_args(char *str);
 void	fractol_error_args(t_fractol *fr);
+int		fractol_error(int argc, char *argv[]);
+void	test_julia(char *argv1, char *argv2);
+int		ft_is_wrong_digit(int c);
 
 #endif

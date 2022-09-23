@@ -37,13 +37,13 @@ int	handle_mouse(int button, int x, int y, t_fractol *fr)
 		x -= W / 2;
 		y -= W / 2;
 		if (x < 0)
-			move(fr, (double)x / W, 'L');
+			move(fr, (double)x / W, 'R');
 		else if (x > 0)
-			move(fr, (double)x * -1 / W, 'R');
+			move(fr, (double)x * -1 / W, 'L');
 		if (y < 0)
-			move(fr, (double)y * -1 / W, 'U');
+			move(fr, (double)y * -1 / W, 'D');
 		else if (y > 0)
-			move (fr, (double)y / W, 'D');
+			move (fr, (double)y / W, 'U');
 		fr->render = 0;
 	}
 	if (button == 4)
@@ -60,22 +60,22 @@ void	move(t_fractol *f, double distance, char direction)
 
 	center_r = f->max_r - f->min_r;
 	center_i = f->max_i - f->min_i;
-	if (direction == 'L')
+	if (direction == 'R')
 	{
 		f->min_r += center_r * distance;
 		f->max_r += center_r * distance;
 	}
-	else if (direction == 'R')
+	else if (direction == 'L')
 	{
 		f->min_r -= center_r * distance;
 		f->max_r -= center_r * distance;
 	}
-	else if (direction == 'U')
+	else if (direction == 'D')
 	{
 		f->min_i -= center_i * distance;
 		f->max_i -= center_i * distance;
 	}
-	else if (direction == 'D')
+	else if (direction == 'U')
 	{
 		f->min_i += center_i * distance;
 		f->max_i += center_i * distance;

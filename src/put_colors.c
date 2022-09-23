@@ -16,9 +16,9 @@ void	put_colors(t_fractol *fr)
 {
 	t_color	colors;
 
-	colors.h = 2 * fr->iter;
-	colors.s = 0.345;
-	colors.v = 0.534;
+	colors.h = 1.5 * fr->iter;
+	colors.s = 0.5;
+	colors.v = 0.5;
 	while (colors.h > 360)
 		colors.h = colors.h - 360;
 	hsv_to_rgb(&colors);

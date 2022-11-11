@@ -23,20 +23,30 @@ CFLAGS		= -Wall -Wextra -Werror
 
 RM			= rm -f
 
+UNAME		= $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	OFLAGS		= $(CFLAGS) -L ./mlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+	MLX			= ./mlx_linux
+else
+	OFLAGS		= $(CFLAGS) -L ./mlx -l mlx -framework OpenGl -framework Appkit
+	MLX			= ./mlx
+endif
+
 .c.o:
 			cc $(CFLAGS) -c $< -o $(<:.c=.o) -I ./includes
 
 $(NAME):	$(OBJS)
 				make -C ./libft
-				make -C ./mlx
-				cc $(CFLAGS) $(OBJS) -L ./mlx -l mlx -framework OpenGl -framework Appkit $(LIBFT) -o $(NAME)
+				make -C $(MLX)
+				cc $(OBJS) $(OFLAGS) $(LIBFT) -o $(NAME)
 
 all:		$(NAME)
 
 clean:
 			$(RM) $(OBJS)
 				make clean -C ./libft
-				make clean -C ./mlx
+				make clean -C $(MLX)
 
 fclean:		clean
 				$(RM) $(NAME)

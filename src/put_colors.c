@@ -16,7 +16,7 @@ void	put_colors(t_fractol *fr)
 {
 	t_color	colors;
 
-	colors.h = 100 * fr->iter;
+	colors.h = 2 * fr->iter;
 	colors.s = 0.5;
 	colors.v = 0.5;
 	while (colors.h > 360)
